@@ -1,0 +1,104 @@
+name: Build and intergration test for Charts repository
+
+on: 
+  push:
+    branches:
+      - feature/*
+      # - main
+      - fix/*
+  pull_request: 
+    branches:
+      - feature/*
+      # - main
+      - fix/*
+
+jobs:
+  clone_and_check_stack:
+    runs-on: ansible-dind
+    permissions:
+      contents: read
+      packages: write 
+    outputs:
+      check_stack_result: ${{ steps.Check_Stacks.outputs.result }}
+    steps:
+
+      - name: Clone repos
+        uses: actions/checkout@v3
+
+      - name: Clone stack_chart
+        run: echo "Clone stack_chart will be write later"
+
+      - name: Check NMAA Stack or ELK Stack or UNKNOWN Stack
+        id: Check_Stacks
+        run: |
+          echo "result=nmaa" >> $GITHUB_ENV
+
+  init_k8s_env_and_intergration_test_for_NMAA:
+    if: needs.clone_and_check_stack.outputs.check_stack_result == 'NMAA'
+    runs-on: ansible-dind
+    needs: clone_and_check_stack
+    permissions:
+      contents: read  
+      packages: write 
+    steps:
+      - name: Clone repos SVTECH_CI_Utilities
+        uses: actions/checkout@v3
+
+      - name: Create VM on Vcenter
+        run: |
+          echo "Create VM on Vcenter"
+          echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/vm--create_k8s_vm.yml"
+
+      - name: Clone repos Installation
+        uses: actions/checkout@v3
+      
+      - name: Install NMAA
+        run: |
+          echo "Install nmaa"
+          echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/get_global_vars.yml"
+          echo "ansible-playbook k8s_nms_for_ci.yml"
+
+      - name: Intergration test
+        if: success()
+        run: |
+          echo "Intergration test:"
+          echo "Rundeck, Icinga2, Grafana..."
+
+      - name: Clean up env lab
+        if: always()
+        run: echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/vm--cleanup_vms.yml"
+
+  init_k8s_env_and_intergration_test_for_ELK:
+    if: needs.clone_and_check_stack.outputs.check_stack_result == 'ELK'
+    needs: clone_and_check_stack
+    runs-on: ansible-dind
+    permissions:
+      contents: read  
+      packages: write 
+    steps:
+      - name: Clone repos SVTECH_CI_Utilities
+        uses: actions/checkout@v3
+
+      - name: Create VM on Vcenter
+        run: |
+          echo "Create VM on Vcenter"
+          echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/vm--create_k8s_vm.yml"
+
+      - name: Clone repos Installation
+        uses: actions/checkout@v3
+      
+      - name: Install NMAA
+        run: |
+          echo "Install nmaa"
+          echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/get_global_vars.yml"
+          echo "ansible-playbook k8s_nms_for_ci.yml"
+
+      - name: Intergration test
+        if: success()
+        run: |
+          echo "Intergration test:"
+          echo "Rundeck, Icinga2, Grafana..."
+
+      - name: Clean up env lab
+        if: always()
+        run: echo "ansible-playbook /opt/SVTECH_CI_utilities/auto_testing/vm--cleanup_vms.yml"
