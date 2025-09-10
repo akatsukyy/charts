@@ -94,7 +94,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: '${{ github.repository_owner }}/stacked_charts'
-        token: ${{ secrets.PUSH_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         path: stacked_charts
         ref: ${{ env.STACKED_CHARTS_BRANCH }}
     
@@ -217,7 +217,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-        token: ${{ secrets.PUSH_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         path: SVTECH_CICD_Utilities
         ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -295,7 +295,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: SVTECH_CICD_Utilities
     #     ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -303,7 +303,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/SVTECH-installation-automation'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: SVTECH-installation-automation
     #     ref: ${{ env.INSTALLATION_BRANCH }}
 
@@ -312,7 +312,7 @@ jobs:
     # #   uses: actions/checkout@v4
     # #   with:
     # #     repository: '${{ github.repository_owner }}/SVTECH-Junos-Automation'
-    # #     token: ${{ secrets.PUSH_TOKEN }}
+    # #     token: ${{ secrets.GH_TOKEN }}
     # #     path: SVTECH-Junos-Automation
     # #     ref: ${{ env.JUNOS_BRANCH }}
 
@@ -320,7 +320,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/stacked_charts'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: stacked_charts
     #     ref: ${{ env.STACKED_CHARTS_BRANCH }}
 
@@ -348,8 +348,8 @@ jobs:
     #     cd ${{ github.workspace }}/SVTECH-installation-automation # To get the correct path for ansible config
     #     ansible-playbook ${{ github.workspace }}/SVTECH-installation-automation/k8s_nms_for_ci.yml \
     #                 -e @${{ github.workspace }}/stacked_charts/kubernetes/nmaa/image_chart_mapping.yml \
-    #                 -e "GH_TOKEN=${{ secrets.PUSH_TOKEN }}" \
-    #                 -e "GH_FG_TOKEN=${{ secrets.PUSH_TOKEN }}" \
+    #                 -e "GH_TOKEN=${{ secrets.GH_TOKEN }}" \
+    #                 -e "GH_FG_TOKEN=${{ secrets.GH_TOKEN }}" \
     #                 -e "GH_USERNAME=svtechnmaa" \
     #                 -e "REPO_PATH=${{ github.workspace }}" \
     #                 -i ${{ github.workspace }}/nmaa_inventory
@@ -372,7 +372,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-          token: ${{ secrets.PUSH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: SVTECH_CICD_Utilities
           ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -465,7 +465,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: SVTECH_CICD_Utilities
     #     ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -473,7 +473,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/SVTECH-installation-automation'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: SVTECH-installation-automation
     #     ref: ${{ env.INSTALLATION_BRANCH }}
 
@@ -482,7 +482,7 @@ jobs:
     # #   uses: actions/checkout@v4
     # #   with:
     # #     repository: '${{ github.repository_owner }}/SVTECH-Junos-Automation'
-    # #     token: ${{ secrets.PUSH_TOKEN }}
+    # #     token: ${{ secrets.GH_TOKEN }}
     # #     path: SVTECH-Junos-Automation
     # #     ref: ${{ env.JUNOS_BRANCH }}
 
@@ -490,7 +490,7 @@ jobs:
     #   uses: actions/checkout@v4
     #   with:
     #     repository: '${{ github.repository_owner }}/stacked_charts'
-    #     token: ${{ secrets.PUSH_TOKEN }}
+    #     token: ${{ secrets.GH_TOKEN }}
     #     path: stacked_charts
     #     ref: ${{ env.STACKED_CHARTS_BRANCH }}
 
@@ -518,8 +518,8 @@ jobs:
     #     cd ${{ github.workspace }}/SVTECH-installation-automation # To get the correct path for ansible config
     #     ansible-playbook ${{ github.workspace }}/SVTECH-installation-automation/k8s_elk_for_ci.yml \
     #                 -e @${{ github.workspace }}/stacked_charts/kubernetes/elk/image_chart_mapping.yml \
-    #                 -e "GH_TOKEN=${{ secrets.PUSH_TOKEN }}" \
-    #                 -e "GH_FG_TOKEN=${{ secrets.PUSH_TOKEN }}" \
+    #                 -e "GH_TOKEN=${{ secrets.GH_TOKEN }}" \
+    #                 -e "GH_FG_TOKEN=${{ secrets.GH_TOKEN }}" \
     #                 -e "GH_USERNAME=svtechnmaa" \
     #                 -e "REPO_PATH=${{ github.workspace }}" \
     #                 -i ${{ github.workspace }}/elk_inventory
@@ -542,7 +542,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-          token: ${{ secrets.PUSH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: SVTECH_CICD_Utilities
           ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -591,7 +591,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-          token: ${{ secrets.PUSH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: SVTECH_CICD_Utilities
           ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
@@ -605,7 +605,7 @@ jobs:
   #       uses: actions/checkout@v4
   #       with:
   #         repository: '${{ github.repository_owner }}/stacked_charts'
-  #         token: ${{ secrets.PUSH_TOKEN }}
+  #         token: ${{ secrets.GH_TOKEN }}
   #         path: stacked_charts
   #         ref: ${{ env.STACKED_CHARTS_BRANCH }}
 
@@ -630,7 +630,7 @@ jobs:
   #       run: |
   #         python3 ${{ github.workspace }}/SVTECH_CICD_Utilities/python_script/public_helmchart_release.py \
   #           --BUILD_VARS_PATH=${{ github.workspace }} \
-  #           --GITHUB_TOKEN=${{ secrets.PUSH_TOKEN}} \
+  #           --GITHUB_TOKEN=${{ secrets.GH_TOKEN}} \
   #           --OWNER=chi-org \
   #           --charts_string=${{ needs.check_charts.outputs.changed_charts }} \
   #           --REPO=charts
@@ -641,7 +641,7 @@ jobs:
   #         helm repo index "$artifacthub_path"
   #         cd ${{ github.workspace }}/charts
   #         # git remote set-url origin https://svtechnmaa:$GIT_TOKEN@github.com/svtechnmaa/charts.git
-  #         git remote set-url origin https://phamtranlinhchi:${{ secrets.PUSH_TOKEN }}@github.com/chi-org/charts.git
+  #         git remote set-url origin https://phamtranlinhchi:${{ secrets.GH_TOKEN }}@github.com/chi-org/charts.git
   #         git fetch origin main
   #         git checkout main
   #         # git config --global user.name "svtechnmaa"
@@ -656,7 +656,7 @@ jobs:
   #         git add .
   #         git commit -m "no-ci: Release" 
   #         # git remote set-url origin https://svtechnmaa:$GIT_TOKEN@github.com/svtechnmaa/stacked_charts.git
-  #         git remote set-url origin https://phamtranlinhchi:${{ secrets.PUSH_TOKEN }}@github.com/chi-org/stacked_charts.git
+  #         git remote set-url origin https://phamtranlinhchi:${{ secrets.GH_TOKEN }}@github.com/chi-org/stacked_charts.git
   #         git push origin master
 
   #     - uses: actions/setup-node@v4
@@ -669,7 +669,7 @@ jobs:
   #       with:
   #         working_directory: ${{ github.workspace }}/charts
   #       env:
-  #         GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }} 
+  #         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
 
   # cleanup:
   #   runs-on: ansible-dind
@@ -745,7 +745,7 @@ jobs:
   #       uses: actions/checkout@v4
   #       with:
   #         repository: '${{ github.repository_owner }}/SVTECH_CICD_Utilities'
-  #         token: ${{ secrets.PUSH_TOKEN }}
+  #         token: ${{ secrets.GH_TOKEN }}
   #         path: SVTECH_CICD_Utilities
   #         ref: ${{ env.CICD_UTILITIES_BRANCH }}
 
